@@ -1,0 +1,7 @@
+**/*.env
+# Ignore all .env.* files (e.g. .env.local, .env.production, etc.)
+**/*.env.*
+!**/.env.example
+**/*.log
+**/.DS_Store
+**/.idea/

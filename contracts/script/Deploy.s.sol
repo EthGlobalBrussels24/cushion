@@ -2,11 +2,12 @@
 pragma solidity >=0.8.25 <0.9.0;
 
 import { BaseScript } from "./Base.s.sol";
-import { IPoolManager } from "v4-core/interfaces/IPoolManager.sol";
+import { IPoolManager } from "@uniswap/v4-core/src/interfaces/IPoolManager.sol";
 import { VaultFactory } from "src/VaultFactory.sol";
 import { MockERC20 } from "src/MockERC20.sol";
-import { console2 } from "forge-std/src/console2.sol";
 import { WrappedNative } from "src/WrappedNative.sol";
+import { CushionHook } from "src/CushionHook.sol";
+import { console2 } from "forge-std/src/console2.sol";
 
 /// @dev See the Solidity Scripting tutorial: https://book.getfoundry.sh/tutorials/solidity-scripting
 contract Deploy is BaseScript {
@@ -14,7 +15,10 @@ contract Deploy is BaseScript {
 
   function run() public broadcast {
     address wrappedNative = address(new WrappedNative());
-    VaultFactory factory = new VaultFactory(BASE_SEPOLIA_POOL_MANAGER, wrappedNative);
+    VaultFactory factory = new VaultFactory(broadcaster, BASE_SEPOLIA_POOL_MANAGER, wrappedNative);
+    // TODO: deploy hook at specific address
+    CushionHook hook = new CushionHook(BASE_SEPOLIA_POOL_MANAGER);
+    factory.setHook(address(hook));
 
     MockERC20 token0 = new MockERC20("Mock Token", "MOCK", 1e18);
     MockERC20 token1 = new MockERC20("Mock Token", "MOCK", 1e18);

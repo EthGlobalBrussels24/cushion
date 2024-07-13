@@ -7,7 +7,7 @@ import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import { IERC20 } from "@openzeppelin/contracts/interfaces/IERC20.sol";
 
 contract Vault is ERC4626 {
-  constructor(IERC20 token, string memory name, string memory symbol) ERC4626(token) ERC20(name, symbol) {
+  constructor(IERC20 token) ERC4626(token) ERC20("Vault", "VAULT") {
     // solhint-disable-previous-line no-empty-blocks
   }
 

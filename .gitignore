@@ -5,5 +5,4 @@
 **/*.log
 **/.DS_Store
 **/.idea/
-.next/
-
+**/.next/

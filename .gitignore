@@ -1,5 +1,7 @@
-**/*.env
-**/*.env.*
+# Ignore all .env files and .env.* files (e.g. .env, .env.local, .env.production, etc.)
+**/.env{,.*}
+#**/*.env
+#**/*.env.*
 !**/.env.example
 **/*.log
 **/.DS_Store

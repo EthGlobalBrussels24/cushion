@@ -1,5 +1,6 @@
 import { Button } from "~/components/ui/button";
 import Link from "next/link";
+import WorldIdButton from "~/app/_components/worldIdButton";
 
 const Header = () => {
   return (
@@ -13,6 +14,10 @@ const Header = () => {
             </Link>
           </div>
           <div>
+            <WorldIdButton/>
+            <Button className="m-4 rounded-full bg-customLightPink text-black transition-all duration-500 hover:bg-customGray hover:text-white">
+              World Id Login
+            </Button>
             <Button className="m-4 rounded-full bg-customLightPink text-black transition-all duration-500 hover:bg-customGray hover:text-white">
               Launch a token
             </Button>

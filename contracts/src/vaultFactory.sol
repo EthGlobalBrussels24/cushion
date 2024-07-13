@@ -7,6 +7,8 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract VaultFactory is Ownable {
   address[] public vaults;
+  address[] public tokens;
+  mapping(address => address) public tokenToVault;
 
   event VaultCreated(address vaultAddress);
 
@@ -20,6 +22,8 @@ contract VaultFactory is Ownable {
     IERC20 _token = IERC20(tokenAddress);
     Vault newVault = new Vault(_token, name, symbol);
     vaults.push(address(newVault));
+    tokens.push(tokenAddress);
+    tokenToVault[tokenAddress] = address(newVault);
     emit VaultCreated(address(newVault));
     return address(newVault);
   }

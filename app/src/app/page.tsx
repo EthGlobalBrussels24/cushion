@@ -21,6 +21,8 @@ export default function Home() {
             <div className="fixed right-[-25%] top-1/5 -translate-y-1/2 transform -z-10 animate-float-reverse">
                 <img src="/pillow.png" alt="pillow" width="900" className="rotate-12"/>
             </div>
+            <br/>
+            <br/>
             <h1 className="font-pt-serif text-center text-8xl font-normal">
                 Launch
                 <br/>
@@ -28,6 +30,8 @@ export default function Home() {
                 <br/>
                 tokens
             </h1>
+            <br/>
+            <br/>
             <div
                 className="group relative m-4 w-1/4 flex-col justify-center rounded-3xl bg-customLightPink p-4 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-200">
                 <div className="absolute left-1/2 top-[-10px] -translate-x-1/2 transform">

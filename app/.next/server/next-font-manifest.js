@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/run/media/chethack/Software/Coding/Projects/EthGlobal Brussels/cushion/app/src/app/layout\":[\"static/media/e11418ac562b8ac1-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"

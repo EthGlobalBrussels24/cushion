@@ -1,6 +1,7 @@
 "use client";
 
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
     Card,
     CardContent,
@@ -11,13 +12,13 @@ import {
 
 // Mock data array
 const cardData = [
-    {title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg"},
-    {title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg"},
-    {title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg"},
-    {title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg"},
-    {title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg"},
-    {title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg"},
-    {title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg"},
+    { id: "1", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
+    { id: "2", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
+    { id: "3", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
+    { id: "4", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
+    { id: "5", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
+    { id: "6", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
+    { id: "7", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
 ];
 
 export default function Home() {
@@ -31,8 +32,8 @@ export default function Home() {
             <div className="flex flex-wrap justify-evenly items-start w-full h-screen mt-12 -mb-32 px-8 relative">
                 <div className="w-full md:w-1/2 lg:w-auto mt-24">
                     <h1 className="font-bold font-mitr text-8xl leading-tight">
-                        Launch<br/>
-                        unruggable<br/>
+                        Launch<br />
+                        unruggable<br />
                         tokens
                     </h1>
                 </div>
@@ -49,7 +50,7 @@ export default function Home() {
                                 1
                             </span>
                             <div>
-                                Launch a token<br/><span className="font-medium">Configure and deploy</span>
+                                Launch a token<br /><span className="font-medium">Configure and deploy</span>
                             </div>
                         </li>
                         <li className="flex items-center">
@@ -58,7 +59,7 @@ export default function Home() {
                                 2
                             </span>
                             <div>
-                                4% Insurance fee<br/><span className="font-medium">Taken from every swap</span>
+                                4% Insurance fee<br /><span className="font-medium">Taken from every swap</span>
                             </div>
                         </li>
                         <li className="flex items-center">
@@ -67,7 +68,7 @@ export default function Home() {
                                 3
                             </span>
                             <div>
-                                Rug free<br/><span className="font-medium">Insurance paying off</span>
+                                Rug free<br /><span className="font-medium">Insurance paying off</span>
                             </div>
                         </li>
                     </ol>
@@ -82,22 +83,26 @@ export default function Home() {
             <div className="w-full px-8 mb-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {cardData.map((card, index) => (
-                        <Card key={index} className="w-full h-48 flex shadow-md">
-                            <div>
-                                <img src={card.image} className="h-44 m-2 rounded-3xl"/>
-                            </div>
-                            <div>
-                                <CardHeader>
-                                    <CardTitle className="font-extrabold text-4xl font-mitr">{card.title}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <p>{card.token}</p>
-                                </CardContent>
-                                <CardFooter>
-                                    <p>Launched {card.launched}</p>
-                                </CardFooter>
-                            </div>
-                        </Card>
+                        <Link key={index} href={`/explore/${card.id}`} passHref legacyBehavior>
+                            <a className="w-full h-48 flex shadow-md no-underline text-black">
+                                <Card className="w-full h-48 flex shadow-md">
+                                    <div>
+                                        <img src={card.image} className="h-44 m-2 rounded-3xl" />
+                                    </div>
+                                    <div>
+                                        <CardHeader>
+                                            <CardTitle className="font-extrabold text-4xl font-mitr">{card.title}</CardTitle>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <p>{card.token}</p>
+                                        </CardContent>
+                                        <CardFooter>
+                                            <p>Launched {card.launched}</p>
+                                        </CardFooter>
+                                    </div>
+                                </Card>
+                            </a>
+                        </Link>
                     ))}
                 </div>
             </div>

@@ -2,6 +2,7 @@ import { Button } from "~/components/ui/button";
 import Link from "next/link";
 import WorldIdButton from "~/app/_components/worldIdButton";
 import {useRouter} from "next/navigation";
+import {signIn} from "next-auth/react";
 
 const Header = () => {
   const router = useRouter();
@@ -19,16 +20,15 @@ const Header = () => {
             </Link>
           </div>
           <div>
-            <WorldIdButton/>
-            <Button className="m-4 rounded-full bg-customLightPink text-black transition-all duration-500 hover:bg-customGray hover:text-white">
-              World Id Login
-            </Button>
-            <Button onClick={handleCreateClick} className="m-4 rounded-full bg-customLightPink text-black transition-all duration-500 hover:bg-customGray hover:text-white">
+            <Button onClick={handleCreateClick}
+                    className="m-4 rounded-full bg-customLightPink text-black transition-all duration-500 hover:bg-customGray hover:text-white">
               Launch a token
             </Button>
-            <Button className="m-4 rounded-full bg-customLightPink text-black transition-all duration-500 hover:bg-customGray hover:text-white">
+            <Button
+                className="m-4 rounded-full bg-customLightPink text-black transition-all duration-500 hover:bg-customGray hover:text-white">
               Connect Wallet
             </Button>
+            <WorldIdButton/>
           </div>
         </div>
       </header>

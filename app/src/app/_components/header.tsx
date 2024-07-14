@@ -1,8 +1,8 @@
+"use client";
 import { Button } from "~/components/ui/button";
 import Link from "next/link";
 import WorldIdButton from "~/app/_components/worldIdButton";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
 
 const Header = () => {
   const router = useRouter();

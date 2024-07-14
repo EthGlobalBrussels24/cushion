@@ -95,9 +95,6 @@ export default function TokenForm() {
         }
     };
 
-    // if (!session) {
-    //     toast(notAuthenticatedToastProps)
-    // }
     useEffect(() => {
         if (!session) {
             toast(notAuthenticatedToastProps);

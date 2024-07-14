@@ -9,7 +9,8 @@ import { Toaster } from "~/components/ui/toaster"
 
 import { TRPCReactProvider } from "~/trpc/react";
 import {SessionProvider} from "next-auth/react";
-import { AuthProvider } from "../lib/authContext";
+import { AuthProvider } from "~/lib/authContext";
+import {Web3ModalProvider} from "~/lib/Web3ModalProvider";
 
 // export const metadata: Metadata = {
 //   title: "Create T3 App",
@@ -23,15 +24,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
-        <SessionProvider >
-            <TRPCReactProvider>
-                <AuthProvider>
-                    <Header />
-                    <Toaster />
-                    {children}
-                </AuthProvider>
-            </TRPCReactProvider>
-        </SessionProvider >
+          <Web3ModalProvider >
+            <SessionProvider >
+                <TRPCReactProvider>
+                    <AuthProvider>
+                        <Header />
+                        <Toaster />
+                        {children}
+                    </AuthProvider>
+                </TRPCReactProvider>
+            </SessionProvider >
+          </Web3ModalProvider >
       </body>
     </html>
   );

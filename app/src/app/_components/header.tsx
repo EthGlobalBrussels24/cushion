@@ -4,6 +4,10 @@ import WorldIdButton from "~/app/_components/worldIdButton";
 import {useRouter} from "next/navigation";
 import {signIn} from "next-auth/react";
 
+export function ConnectButton() {
+  return <w3m-button />
+}
+
 const Header = () => {
   const router = useRouter();
   const handleCreateClick = () => {
@@ -28,6 +32,9 @@ const Header = () => {
                 className="m-4 rounded-full bg-customLightPink text-black transition-all duration-500 hover:bg-customGray hover:text-white">
               Connect Wallet
             </Button>
+            <ConnectButton>
+            </ConnectButton>
+            <w3m-button/>
             <WorldIdButton/>
           </div>
         </div>

@@ -1,8 +1,8 @@
+"use client";
 import { Button } from "~/components/ui/button";
 import Link from "next/link";
 import WorldIdButton from "~/app/_components/worldIdButton";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
 
 const Header = () => {
   const router = useRouter();
@@ -22,7 +22,7 @@ const Header = () => {
             </div>
           </Link>
         </div>
-        <div>
+        <div className="flex items-center justify-center">
           <Button
             onClick={handleCreateClick}
             className="m-4 rounded-full bg-customLightPink text-black transition-all duration-500 hover:bg-customGray hover:text-white"
@@ -35,10 +35,8 @@ const Header = () => {
           >
             Explore memecoins
           </Button>
-          <Button className="m-4 rounded-full bg-customLightPink text-black transition-all duration-500 hover:bg-customGray hover:text-white">
-            Connect Wallet
-          </Button>
           <WorldIdButton />
+          <w3m-button balance="hide" size="md" />
         </div>
       </div>
     </header>

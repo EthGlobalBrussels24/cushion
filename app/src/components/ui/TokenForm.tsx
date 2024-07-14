@@ -18,6 +18,11 @@ import { Textarea } from "~/components/ui/textarea";
 import { Button } from "~/components/ui/button";
 import { useAuth } from "~/lib/authContext";
 import { useToast } from "~/components/ui/use-toast";
+import { useChainId, useSwitchChain, useWriteContract } from "wagmi";
+import { cushionFactoryAbi } from "~/lib/abi";
+import { parseUnits } from "viem";
+import { baseSepolia } from "viem/chains";
+import { navigate } from "next/navigation";
 
 // Define your form schemas for each step
 const step1Schema = z.object({
@@ -49,6 +54,10 @@ export default function TokenForm() {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const { session, loading } = useAuth();
   const { toast } = useToast();
+  const { writeContract, status } = useWriteContract();
+  const { switchChain } = useSwitchChain();
+  const activeChainId = useChainId();
+
   const notAuthenticatedToastProps = {
     title: "Authentication required",
     description: "Login with World Id to perform this action",
@@ -69,8 +78,43 @@ export default function TokenForm() {
   });
 
   const onSubmit = (data: FormData) => {
-    console.log("Final submission: ", data);
+    if (activeChainId !== baseSepolia.id) {
+      switchChain({
+        chainId: baseSepolia.id,
+      });
+    }
+
+    // other chains here
+    writeContract({
+      abi: cushionFactoryAbi,
+      address: "0x74c4aEDEdE3E3bB201478Ad760F45aD2eA9Cca2E",
+      functionName: "launchCushionToken",
+      args: [
+        data.name,
+        data.ticker,
+        parseUnits(data.totalSupply.toString(), 18),
+      ],
+    });
   };
+
+  useEffect(() => {
+    switch (status) {
+      case "success":
+        toast({
+          title: "Token deployed",
+          description: "Your token has been deployed successfully",
+        });
+        navigate("/");
+        break;
+      case "error":
+        toast({
+          title: "Error",
+          description: "An error occurred while deploying your token",
+          variant: "destructive",
+        });
+        break;
+    }
+  }, [status]);
 
   const handleBack = () => {
     if (step > 1) {

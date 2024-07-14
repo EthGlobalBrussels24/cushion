@@ -12,13 +12,13 @@ import {
 
 // Mock data array
 const cardData = [
-    { id: "1", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
-    { id: "2", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
-    { id: "3", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
+    { id: "1", title: "notamuffin", token: "$notamuffin", launched: "Served fresh", image: "/poop.jpg" },
+    { id: "2", title: "justababy", token: "$justababy", launched: "4 hours ago", image: "/baby.jpg" },
+    { id: "3", title: "frog", token: "$frog", launched: "1 Day ago", image: "/frog.jpg" },
     { id: "4", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
-    { id: "5", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
-    { id: "6", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
-    { id: "7", title: "meounch", token: "$meounch", launched: "1 Day ago", image: "/cat.jpg" },
+    { id: "5", title: "creep", token: "$creep", launched: "1 Day ago", image: "/creeper.jpg" },
+    { id: "6", title: "babyshark", token: "$babyshark", launched: "1 Day ago", image: "/shark.jpeg" },
+    { id: "7", title: "ye", token: "$ye", launched: "1 Day ago", image: "/ye.jpg" },
 ];
 
 export default function Home() {

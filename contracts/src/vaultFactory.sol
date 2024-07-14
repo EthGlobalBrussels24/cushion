@@ -54,6 +54,14 @@ contract VaultFactory is Ownable {
     _initializeUniPool(token, wrappedNative, hook, initialPrice, abi.encode(vault));
   }
 
+  function increaseCushionRiskFactor(address vault, uint256 amountInsured, uint256 amountWNative) external {
+    // Vault(vault).increaseCushionRiskFactor(poolId, cushionRiskFactor);
+  }
+
+  function decreaseCushionRiskFactor(address vault, uint256 amountInsured, uint256 amountWNative) external {
+    // Vault(vault).burn(from, amount);
+  }
+
   function getVaults() external view returns (address[] memory) {
     return vaults;
   }

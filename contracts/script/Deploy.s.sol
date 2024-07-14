@@ -17,7 +17,7 @@ contract Deploy is BaseScript {
     address wrappedNative = address(new WrappedNative());
     VaultFactory factory = new VaultFactory(broadcaster, BASE_SEPOLIA_POOL_MANAGER, wrappedNative);
     // TODO: deploy hook at specific address
-    CushionHook hook = new CushionHook(BASE_SEPOLIA_POOL_MANAGER);
+    CushionHook hook = new CushionHook(BASE_SEPOLIA_POOL_MANAGER, factory);
     factory.setHook(address(hook));
 
     MockERC20 token0 = new MockERC20("Mock Token", "MOCK", 1e18);

@@ -1,2 +1,4 @@
 @openzeppelin/contracts/=node_modules/@openzeppelin/contracts/
 forge-std/=node_modules/forge-std/
+v4-core/=lib/v4-core/src/
+v4-periphery/=lib/v4-periphery/contracts/

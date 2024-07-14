@@ -3,11 +3,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import { Button } from "~/components/ui/button";
+import { useAuth } from "~/lib/authContext";
+import {useToast} from "~/components/ui/use-toast"
+
 
 // Define your form schemas for each step
 const step1Schema = z.object({
@@ -31,6 +34,12 @@ type FormData = z.infer<typeof formSchema>;
 export default function TokenForm() {
     const [step, setStep] = useState(1);
     const [imagePreview, setImagePreview] = useState<string | null>(null);
+    const { session, loading } = useAuth();
+    const { toast } = useToast()
+    const notAuthenticatedToastProps = {
+        title: "Authentication required",
+        description: "Login with World Id to perform this action",
+    }
     const form = useForm<FormData>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -85,6 +94,15 @@ export default function TokenForm() {
             setStep(step + 1);
         }
     };
+
+    // if (!session) {
+    //     toast(notAuthenticatedToastProps)
+    // }
+    useEffect(() => {
+        if (!session) {
+            toast(notAuthenticatedToastProps);
+        }
+    }, [session]);
 
     return (
         <div className="relative w-full h-screen">
@@ -297,7 +315,9 @@ export default function TokenForm() {
                                 </Button>
                             )}
                             {step < 3 && (
-                                <Button type="button" onClick={handleNextStep}>
+                                <Button
+                                    type="button"
+                                    onClick={session ? handleNextStep : () => toast(notAuthenticatedToastProps)}>
                                     Next
                                 </Button>
                             )}

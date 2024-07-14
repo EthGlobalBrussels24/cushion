@@ -22,7 +22,6 @@ import { useChainId, useSwitchChain, useWriteContract } from "wagmi";
 import { cushionFactoryAbi } from "~/lib/abi";
 import { parseUnits } from "viem";
 import { baseSepolia } from "viem/chains";
-import { navigate } from "next/navigation";
 
 // Define your form schemas for each step
 const step1Schema = z.object({
@@ -104,7 +103,6 @@ export default function TokenForm() {
           title: "Token deployed",
           description: "Your token has been deployed successfully",
         });
-        navigate("/");
         break;
       case "error":
         toast({
